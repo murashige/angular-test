@@ -1,10 +1,10 @@
 <div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">angular test</h3>
+<ul class="nav nav-pills pull-right">
+<li class="active"><a ng-href="#/">Home</a></li>
+<li><a ng-href="#/efo">efo</a></li>
+<li><a ng-href="#">Contact</a></li>
+</ul>
+<h3 class="text-muted">angular test</h3>
 </div>
 
 <div class="jumbotron">
@@ -29,6 +29,58 @@
 
   <h4>Karma</h4>
   <p>Spectacular Test Runner for JavaScript.</p>
+</div>
+
+<div>
+	<h4>ng-if</h4>
+	<input type="number" ng-model="num">
+	<div class="" ng-if="num != null">1 + {{num}} = {{1 + num}}</div>
+	<h4>ng-class</h4>
+	<input type="number" ng-model="num2">
+	<div ng-class="{ red: num2 === 100, blue: num2 === 50 }">1 + {{num2}} = {{1 + num2}}</div>
+	<h4>ng-click</h4>
+	<input type="number" ng-model="num3">
+	<button ng-click="num3 = num3 + 1">increment</button>
+	<div>1 + {{num3}} = {{1 + num3}}</div>
+	<h4>tab</h4>
+	<div ng-init="tab = 1" class="tab">
+	<span ng-click="tab = 1" ng-class="{ active: tab === 1 }">Tab1</span>
+	<span ng-click="tab = 2" ng-class="{ active: tab === 2 }">Tab2</span>
+	<span ng-click="tab = 3" ng-class="{ active: tab === 3 }">Tab3</span>
+
+	<div ng-show="tab === 1">Tab1 Content Tab1 Content Tab1 Content Tab1 Content Tab1 Content Tab1 Content Tab1 Content Tab1 Content Tab1 Content Tab1 Content</div>
+	<div ng-show="tab === 2">Tab2 Content Tab2 Content Tab2 Content Tab2 Content Tab2 Content Tab2 Content Tab2 Content Tab2 Content Tab2 Content Tab2 Content</div>
+	<div ng-show="tab === 3">Tab3 Content Tab3 Content Tab3 Content Tab3 Content Tab3 Content Tab3 Content Tab3 Content Tab3 Content Tab3 Content Tab3 Content</div>
+	</div>
+	<h4>$scope</h4>
+	<div>
+	<input type="text" ng-model="name">
+	<button ng-click="onClickBtn()">reverse</button>
+	<div>Hello {{name | uppercase | reverse}}!</div>
+	</div>
+	<h4>日付フィルタ</h4>
+	<div>
+	{{now | date:'yyyy年MM月dd日 HH時mm分ss秒'}}
+	</div>
+	<h4>filter,jsonフィルタ</h4>
+	<div>
+	<input type="text" ng-model="searchText">
+	<pre>{{ names | filter:searchText | json }}</pre>
+	</div>
+	<h4>ng-repeat</h4>
+	<div>
+	<ul ng-repeat="name2 in names2">
+	<li>{{name2}}</li>
+	</ul>
+	</div>
+	<h4>フィールドごとに絞り込み</h4>
+	<div>
+	<input type="search" ng-model="search.name" placeholder="名前から検索"><br>
+	<input type="search" ng-model="search.age" placeholder="年齢から検索">
+	<ul ng-repeat="member in members | filter:search">
+	<li>{{member.name}} ({{member.age}})</li>
+	</ul>
+	</div>
 </div>
 
 <div class="footer">
