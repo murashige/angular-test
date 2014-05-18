@@ -1,0 +1,75 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li><a ng-href="#/">Home</a></li>
+    <li class="active"><a ng-href="#/efo">efo</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">angular test</h3>
+</div>
+
+<div class="efo content">
+<h3>お問い合わせ</h3>
+<form method="post" name="userInfo" novalidate>
+<table class="table table-bordered">
+<tr>
+<th>氏名
+<small class="error" ng-hide="userInfo.userName.$valid">必須</small>
+<small class="valid" ng-show="userInfo.userName.$valid">OK</small>
+</th>
+<td ng-form name="userName">
+<label>性：<input type="text" name="firstName" ng-model="data.name.firstName" required></label>
+<label>名：<input type="text" name="lastName" ng-model="data.name.lastName" required></label>
+</td>
+</tr>
+<tr>
+<th>氏名（カナ）
+<small class="error" ng-hide="userInfo.userNameKana.$valid">必須</small>
+<small class="valid" ng-show="userInfo.userNameKana.$valid">OK</small>
+</th>
+<td>
+<input type="text" class="form-control"  name="userNameKana" ng-model="userNameKana" ng-minlength="6" ng-maxlength="12" required>
+<small class="error" ng-show="userInfo.userNameKana.$error.minlength">6文字以上です</small>
+<small class="error" ng-show="userInfo.userNameKana.$error.maxlength">12文字までです</small>
+</td>
+</tr>
+<tr>
+<th>ご希望の連絡方法
+<small class="error" ng-hide="userInfo.contactMethod.$valid">必須</small>
+<small class="valid" ng-show="userInfo.contactMethod.$valid">OK</small>
+</th>
+<td>
+<label class="radio-inline"><input type="radio" name="contactMethod" ng-model="contactMethod" value="電話" require>電話</label>
+<label class="radio-inline"><input type="radio" name="contactMethod" ng-model="contactMethod" value="FAX" require>FAX</label>
+<label class="radio-inline"><input type="radio" name="contactMethod" ng-model="contactMethod" value="メール" require>メール</label>
+</td>
+</tr>
+<tr>
+<th>電話番号
+<small class="error" ng-hide="userInfo.tel.$valid">必須</small>
+<small class="valid" ng-show="userInfo.tel.$valid">OK</small>
+</th>
+<td>
+<input type="text" class="form-control"  name="tel" ng-model="tel" ng-minlength="10" ng-maxlength="11" ng-pattern="/^\d+$/" required>
+<small class="error" ng-show="userInfo.tel.$error.minlength">10桁以上です</small>
+<small class="error" ng-show="userInfo.tel.$error.maxlength">11桁までです</small>
+<small class="error" ng-show="userInfo.tel.$error.pattern">半角数字のみで入力してください</small>
+</td>
+</tr>
+<tr>
+<th>メールアドレス
+<small class="error" ng-hide="userInfo.mail.$valid">必須</small>
+<small class="valid" ng-show="userInfo.mail.$valid">OK</small>
+</th>
+<td>
+<input type="email" class="form-control" name="mail" ng-model="mail" required>
+<small class="error" ng-show="userInfo.mail.$error.email">正しいメールアドレスを入力してください</small>
+</td>
+</tr>
+</table>
+<button class="btn btn-primary" ng-disabled="userInfo.$invalid">送信</button>
+</form>
+</div>
+
+<div class="footer">
+  <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+</div>
